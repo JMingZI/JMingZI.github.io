@@ -89,20 +89,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、关于上传图片到七牛">一、关于上传图片到七牛</h2><p>1、上传图片用的插件<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">hexo-qiniu-sync</a><br>配置代码：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">qiniu:</span></span><br><span class="line"><span class="label">  offline:</span> <span class="literal">false</span></span><br><span class="line"><span class="label">  sync:</span> <span class="literal">true</span></span><br><span class="line"><span class="label">  bucket:</span> mydata</span><br><span class="line"><span class="label">  access_key:</span> ***</span><br><span class="line"><span class="label">  secret_key:</span> ***</span><br><span class="line"><span class="label">  dirPrefix:</span> <span class="keyword">static</span></span><br><span class="line"><span class="label">  urlPrefix:</span> <span class="string">http:</span><span class="comment">//7u2jxw.com1.z0.glb.clouddn.com/static</span></span><br><span class="line"><span class="label">  local_dir:</span> <span class="keyword">static</span></span><br><span class="line"><span class="label">  update_exist:</span> <span class="literal">true</span></span><br><span class="line"><span class="label">  image:</span> </span><br><span class="line"><span class="label">    folder:</span> images</span><br><span class="line"><span class="label">    extend:</span> imageView2<span class="regexp">/0/</span>w<span class="regexp">/&lt;LongEdge&gt;/</span>h/&lt;ShortEdge&gt;</span><br><span class="line"><span class="label">  js:</span></span><br><span class="line"><span class="label">    folder:</span> js</span><br><span class="line"><span class="label">  css:</span></span><br><span class="line"><span class="label">    folder:</span> css</span><br></pre></td></tr></table></figure></p>
-<p><em>这里的image.extend是根据七牛图片配置<a href="http://developer.qiniu.com/docs/v6/api/reference/fop/image/" target="_blank" rel="external">七牛开发者中心-图片处理</a></em><br>我采用的是：<code>图片基本处理（imageView2）</code>也就是<code>imageView2/0/w/&lt;LongEdge&gt;/h/&lt;ShortEdge&gt;</code></p>
-<p>2、用法   </p>
-<ul>
-<li>将要上传的图片copy到<code>static-&gt;images</code>下，然后运行<code>hexo qiniu sync</code>，会自动将图片上传到七牛</li>
-<li>在<code>MD</code>中引入图片，直接使用 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">\&#123;\% qnimg logo.png <span class="attribute">title</span>:这是标题 <span class="attribute">alt</span>:这是说明 <span class="string">'class:class1 class2'</span> <span class="attribute">extend</span>:?imageView2<span class="regexp">/0/w/</span>&lt;LongEdge&gt;<span class="regexp">/h/</span>&lt;ShortEdge&gt; %&#125;</span><br><span class="line">`<span class="javascript"></span>``<span class="javascript">    </span><br><span class="line">这里(*需要把最前面的<span class="number">2</span>个反斜杠去掉*)的图片处理模式</span>`w<span class="regexp">/&lt;LongEdge&gt;/h/</span>&lt;ShortEdge&gt;`<span class="javascript">是指：长边最多为&lt;LongEdge&gt;，短边最多为&lt;ShortEdge&gt;，进行等比缩放，不裁剪。如果只指定 w 参数则表示限定长边（短边自适应），只指定 h 参数则表示限定短边（长边自适应）。</span><br><span class="line"></span><br><span class="line">****</span><br><span class="line"></span><br><span class="line">二、发布文章的命令操作</span><br><span class="line">----------------------</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>、常用操作</span><br><span class="line">- </span>`hexo <span class="keyword">new</span> <span class="string">'文章名'</span>`<span class="javascript"> -- 新建文章</span><br><span class="line">- </span>`hexo genarate`<span class="javascript"> -- 生成文章</span><br><span class="line">- </span>`hexo deploy`<span class="javascript"> -- 部署上线</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、将hexo部署到git上的</span>`yaml`<span class="javascript">代码</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/JMingZI/jmingzi.github.io.git" target="_blank" rel="external">https://github.com/JMingZI/jmingzi.github.io.git</a><br>  branch: master<br>  message:<br>```</p>
-
+        <h2 id="一、关于上传图片到七牛">一、关于上传图片到七牛</h2><p>1、上传图片用的插件<a href="https://github.com/gyk001/hexo-qiniu-sync">hexo-qiniu-sync</a><br>配置代码：
+        
+          <p class="article-more-link">
+            <a href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/#more">阅读更多</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cihrln8c70000ssve4pplsjqj" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cihrmqunj0000novegrjpxclw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -154,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="cihrln8cj0003ssvenjq0ii8r" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="cihrmqunw0003nove61xcn6h4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript，前端规范/">javascript，前端规范</a></li></ul>
@@ -199,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/hello-world/" data-id="cihrln8cm0006ssvezjc07cip" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/hello-world/" data-id="cihrmqunz0006nove4qbsrsao" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
