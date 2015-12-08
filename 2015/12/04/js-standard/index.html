@@ -1,46 +1,431 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-standard | Jmingzi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="准备
+ 如何用markdown写作：关于markdown的语法完整说明 sublime text3 markdown语法插件 markdown preview
 
-block title
-  title= page.title + " | " + config.title
 
-block content
-  .post.post-page
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format) + " | "
-      if page.categories.length > 0
-        span.categories= __('belongsto')
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= " " + category.name
-    if theme.duoshuo
-      span.ds-thread-count(data-thread-key=page.path)
-    if theme.disqus
-      span.disqus-comment-count(data-disqus-identifier=page.path)
-    if page.toc
-      div(class="clear")
-        div(id="toc" class="toc-article")
-          div(class="toc-title")= __('contents')
-          != toc(page.content)
-    .post-content
-      != page.content
-    if page.tags
-      .tags
-        for tag in page.tags.toArray()
-          a(href=url_for(tag.path))= tag.name
-    include _partial/post-nav
-    if theme.duoshuo
-      div(class='ds-share flat' data-thread-key=page.path, data-title=page.title, data-url=page.permalink)
-         .ds-share-inline
-            ul.ds-share-icons-16
-              li(data-toggle='ds-share-icons-more')
-                a(class='ds-more' href='javascript:void(0);') 分享到：
-              li
-                a(class='ds-weibo' href='javascript:void(0);' data-service='weibo') 微博
-              li
-                a(class='ds-qzone' href='javascript:void(0);' data-service='qzone') QQ空间
-              li
-                a(class='ds-qqt' href='javascript:void(0);' data-service='qqt') 腾讯微博
-              li
-                a(class='ds-wechat' href='javascript:void(0);' data-service='wechat') 微信
-            .ds-share-icons-more
+用法1、打开package install（ctrl+shift+p）2、找到install package3、搜索markdown preview
 
-    include _partial/comments
+另外规范空格缩进的问题，打开preferences-&amp;gt; settings-us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-standard">
+<meta property="og:url" content="http://jmingzi.github.io/2015/12/04/js-standard/index.html">
+<meta property="og:site_name" content="Jmingzi">
+<meta property="og:description" content="准备
+ 如何用markdown写作：关于markdown的语法完整说明 sublime text3 markdown语法插件 markdown preview
+
+
+用法1、打开package install（ctrl+shift+p）2、找到install package3、搜索markdown preview
+
+另外规范空格缩进的问题，打开preferences-&amp;gt; settings-us">
+<meta property="og:updated_time" content="2015-12-04T10:26:17.560Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js-standard">
+<meta name="twitter:description" content="准备
+ 如何用markdown写作：关于markdown的语法完整说明 sublime text3 markdown语法插件 markdown preview
+
+
+用法1、打开package install（ctrl+shift+p）2、找到install package3、搜索markdown preview
+
+另外规范空格缩进的问题，打开preferences-&amp;gt; settings-us">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmingzi" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://ymblog.net/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jmingzi</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A humorous man</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">档案</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jmingzi.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-standard" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/04/js-standard/" class="article-date">
+  <time datetime="2015-12-04T10:22:33.000Z" itemprop="datePublished">2015-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-standard
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="准备">准备</h1><blockquote>
+<p> 如何用markdown写作：<a href="http://wowubuntu.com/markdown/index.html" target="_blank" rel="external">关于markdown的语法完整说明</a><br> sublime text3 markdown语法插件 <strong>markdown preview</strong></p>
+</blockquote>
+<ul>
+<li><p>用法<br>1、打开package install（ctrl+shift+p）<br>2、找到install package<br>3、搜索<strong>markdown preview</strong></p>
+</li>
+<li><p>另外规范空格缩进的问题，打开preferences-&gt; settings-user 加上 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;tab_size&#34;: 2,&#10;&#34;translate_tabs_to_spaces&#34;: true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="前端js基本规范">前端js基本规范</h1><ul>
+<li>缩进<br>统一使用两空格缩进<br>理由：结合 80 字符的限制 + javascript 的异步嵌套，如果使用四个空格需要面临不断换行的问题</li>
+<li>引号<br>统一使用单引号</li>
+<li>编码<br>统一使用 utf-8 编码</li>
+<li>单行字符长度限制<br>单行代码字符长度尽量不超过 80 个字符<br>理由：代码更加清晰，便于阅读</li>
+<li><p>严格模式<br>推荐总是在 js 文件头部声明使用严格模式，这样可以使你的代码更加健壮，参考 MDN 严格模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建议使用字面量来代替构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="代码规范">代码规范</h1><ul>
+<li><p>对象<br>不要使用保留字 reserved words 作为对象属性，IE8 下不支持。参考</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// bad</span><br><span class="line">var superman = &#123;</span><br><span class="line">class: 'superhero'</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// good</span><br><span class="line">var superman = &#123;</span><br><span class="line">className: 'superhero'</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组<br>使用 Array#push 为数组添加元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someStack = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">someStack[someStack.length] = <span class="string">'test'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">someStack.push(<span class="string">'test'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串<br>超过80个字符的字符串应该使用字符串连接换行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> errorMessage = <span class="string">'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> errorMessage = <span class="string">'This is a super long error that '</span> +</span><br><span class="line"><span class="string">'was thrown because of Batman.'</span> +</span><br><span class="line"><span class="string">'fast.'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数<br>不要在非函数块（if, while 等）里声明函数，如有需要，可以把函数赋值给一个变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Nope.'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (currentUser) &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Yup.'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">test();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绝对不要把参数命名为 arguments, 这将会覆盖arguments 对象.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nope</span>(<span class="params">name, options, arguments</span>) </span>&#123;</span><br><span class="line"><span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yup</span>(<span class="params">name, options, args</span>) </span>&#123;</span><br><span class="line"><span class="comment">// ...stuff...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>属性<br>访问对象的属性时，尽可能使用 .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> superman = &#123;</span><br><span class="line">age: <span class="number">12</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> age = superman[<span class="string">'age'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> age = superman.age;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量<br>总是使用 var 来声明变量，如果不这么做将导致产生全局变量，我们要避免污染全局命名空间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">superPower = <span class="keyword">new</span> SuperPower();</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> superPower = <span class="keyword">new</span> SuperPower();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>推荐使用多个 var 声明多个变量。理由：方便增删；多 var 可以更好的帮助养成良好的习惯，而不发生遗漏 var 而导致全局变量的风险。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> first = <span class="number">1</span>,</span><br><span class="line">second = <span class="number">2</span>,</span><br><span class="line">third = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> first = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> second = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> third = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>条件表达式和等号</p>
+<ul>
+<li>尽量使用 === 和 !==</li>
+<li>条件表达式的强制类型转换遵循以下规则：</li>
+<li>对象 被计算为 true</li>
+<li>Undefined 被计算为 false</li>
+<li>Null 被计算为 false</li>
+<li>布尔值 被计算为 布尔的值</li>
+<li>数字 如果是 +0, -0, or NaN 被计算为 false , 否则为 true</li>
+<li>字符串 如果是空字符串 ‘’ 则被计算为 false, 否则为 true</li>
+<li>0, 值为 0 时，要特别注意</li>
+<li>更多信息请阅读 Truth Equality and JavaScript.块</li>
+</ul>
+</li>
+<li><p>不要省略花括号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (test)</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span> (test) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (test) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>花括号后应该换行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">test</span>) </span>&#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>空白<br>操作符之间需要有空格</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>+<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span> + <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数空格</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>) </span>&#123;      <span class="comment">// 多个参数时逗号后要加空格</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>)</span>&#123;      <span class="comment">// 花括号前需要加空格</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"> a, b </span>) </span>&#123;   <span class="comment">// 参数两边不需要加空格</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">a, b</span>) </span>&#123;    <span class="comment">// 函数名和参数括号前不需要加空格</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>块级代码 (if, else, for 等) 基本与函数保持一致</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">if</span>(hasName)&#123; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//bad </span></span><br><span class="line"><span class="keyword">if</span> ( hasName ) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">if</span> (hasName) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> base = &#123;</span><br><span class="line">width : <span class="number">100</span>,</span><br><span class="line">height:<span class="number">200</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> base = &#123;</span><br><span class="line">width: <span class="number">100</span>,</span><br><span class="line">height: <span class="number">200</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>key, value 之间只需要一个空格，因为这样更加自然与易读。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">&#123;</span><br><span class="line">a           : <span class="string">'short'</span>,</span><br><span class="line">looooongname: <span class="string">'long'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">&#123;</span><br><span class="line">a:            <span class="string">'short'</span>,</span><br><span class="line">looooongname: <span class="string">'long'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">&#123;</span><br><span class="line">a: <span class="string">'short'</span>,</span><br><span class="line">looooongname: <span class="string">'long'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>避免使用过长的链式调用；调用比较长时建议使用换行和缩进来组织结构</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line">$(<span class="string">'#items'</span>).find(<span class="string">'.selected'</span>).highlight().end().find(<span class="string">'.open'</span>).updateCount();</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">$(<span class="string">'#items'</span>)</span><br><span class="line">.find(<span class="string">'.selected'</span>)</span><br><span class="line">  .highlight()</span><br><span class="line">  .end()</span><br><span class="line">.find(<span class="string">'.open'</span>)</span><br><span class="line">  .updateCount();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>逗号<br>逗号后置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  name: <span class="string">'马云'</span></span><br><span class="line">, gender: <span class="string">'男'</span></span><br><span class="line">, age: <span class="number">1024</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">name: <span class="string">'马云'</span>,</span><br><span class="line">gender: <span class="string">'男'</span>,</span><br><span class="line">age: <span class="number">1024</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不要加多余的逗号，这可能会在 IE 下引起错误，同时如果多一个逗号某些 ES3 的实现会导致数组长度加1。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> hero = &#123;</span><br><span class="line">firstName: <span class="string">'Kevin'</span>,</span><br><span class="line">lastName: <span class="string">'Flynn'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> heroes = [</span><br><span class="line"><span class="string">'Batman'</span>,</span><br><span class="line"><span class="string">'Superman'</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hero = &#123;</span><br><span class="line">firstName: <span class="string">'Kevin'</span>,</span><br><span class="line">lastName: <span class="string">'Flynn'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> heroes = [</span><br><span class="line"><span class="string">'Batman'</span>,</span><br><span class="line"><span class="string">'Superman'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类型转换<br>在语句的开始执行类型转换<br>建议使用强制类型转换</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line">str = <span class="string">''</span> + <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line">str = <span class="built_in">String</span>(str);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对数字使用 parseInt 并且总是带上类型转换的基数，备注：parseFloat 方法没有基数参数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inputValue = <span class="string">'4'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = + inputValue;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue);</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">Number</span>(inputValue);</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> val = <span class="built_in">parseInt</span>(inputValue, <span class="number">10</span>);</span><br><span class="line">布尔值:</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="keyword">new</span> <span class="built_in">Boolean</span>(age);</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> hasAge = <span class="built_in">Boolean</span>(age);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="命名规范">命名规范</h1><ul>
+<li><p>原则<br>所有的命名必须有语义，所以永远不要使用单个字符命名。</p>
+</li>
+<li><p>变量<br>变量声明必须使用 var, 命名规范统一为小驼峰命名法：即第一个单词首字母小写，其余单词的首字母大写。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dirty</span></span><br><span class="line">eventType = <span class="string">'click'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> eventtype = <span class="string">'click'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> EventType = <span class="string">'click'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> eventType = <span class="string">'click'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象字面量命名使用小驼峰</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> Base = &#123;</span><br><span class="line">isOnline: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">return</span> Base;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> base = &#123;</span><br><span class="line">isOnline: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">return</span> base;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>常量<br>常量的命名使用全大写字母，多单词使用下划线分开，例如：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> WELCOME_TEXT = <span class="string">'Hello World'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数/类<br>构造函数/类使用大驼峰命名，即所有单词首字母大写。如下示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MenuButton</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MenuButton.prototype.show = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数名<br>普通函数名使用小驼峰，尽可能的选用动词作为名字。<br>布尔值<br>尽量使用表示状态的词汇来命名布尔值：可以是形容词、副词，或充当状语成分的词组。这种情况下，不要添加诸如 is, has, can 的前缀，因为那样看上去像是命名一个方法。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">this</span>.available = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">this</span>.isAvailable = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.available;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">this</span>.isAvailable = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果无法通过上一种情况来命名，比如描述的目标是一个名词，那么可以添加诸如 is, has, can 的前缀。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">this</span>.hasName = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">this</span>.name = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用「表示肯定的」词汇来命名布尔值，而不是「表示否定的」。因为这样更易读，并且 具有更好的兼容性：因为如果此变量未定义，那么其默认值为undefined，等价于 false。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">this</span>.available = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">this</span>.unavailable = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置项<br>组件配置项属性名使用小驼峰</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">new</span> Compoment(&#123;</span><br><span class="line">event_type: <span class="string">'click'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">new</span> Compoment(&#123;</span><br><span class="line">eventType: <span class="string">'click'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>私有属性前面加下划线 _</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">this</span>.__firstName__ = <span class="string">'Panda'</span>;</span><br><span class="line"><span class="keyword">this</span>.firstName_ = <span class="string">'Panda'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">this</span>._firstName = <span class="string">'Panda'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="注释规范">注释规范</h2><ul>
+<li>原则<br>不要为了注释而注释，多余的注释等价于冗余的代码<br>如有必要，注释尽量详尽<br>注释的目的是：提高代码的可读性，从而提高代码的可维护性。<br><em>单行注释</em><br>单行注释使用 //, 一般面向的是语句或者简单逻辑的代码块 <code>(if, for, function)</code><br>应独立于一行，不要追加在某条语句的后面</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> active = <span class="literal">true</span>;  <span class="comment">// bad, is current tab</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// good, is current tab</span></span><br><span class="line"><span class="keyword">var</span> active = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在单行注释前添加一个空行，便于阅读区分</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fetching type...'</span>);</span><br><span class="line"><span class="comment">// set the default type to 'no type'</span></span><br><span class="line"><span class="keyword">var</span> type = <span class="keyword">this</span>._type || <span class="string">'no type'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fetching type...'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// set the default type to 'no type'</span></span><br><span class="line"><span class="keyword">var</span> type = <span class="keyword">this</span>._type || <span class="string">'no type'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> type;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多行注释：<br>一般情况下，多行注释用于函数/对象/文件。<br>多行注释使用 /** */ 或 /* */, 不推荐使用多行的 // 来替代 /**/.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="comment">// it's foo</span></span><br><span class="line"><span class="comment">// but not bar</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good, it's foo, but not bar</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">* good</span><br><span class="line">* it's foo, but not bar</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* good</span><br><span class="line">* it's foo, but not bar</span><br><span class="line">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于公共的类/库/组件等代码，面向较多的使用者，推荐使用更为完善的注释规范：<br>函数功能说明，必选<br>参考文档链接，可选<br>示例，可选<br>参数说明，可选<br>返回值说明，有则必选<br>api 类型<code>(public/private)</code>, 可选<br>如下，是一个良好风格的示例：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 给医生推送消息的方法</span><br><span class="line"> *</span><br><span class="line"> * Doc: http://10.0.10.23:8088/api/index#1</span><br><span class="line"> *</span><br><span class="line"> * Example:</span><br><span class="line"> *   message(1, '马云', 'Hello')</span><br><span class="line"> *</span><br><span class="line"> * @param &#123;Number&#125;   type     消息类型：0-专家 1-普通</span><br><span class="line"> * @param &#123;String&#125;   name     医生昵称</span><br><span class="line"> * @param &#123;String&#125;   content  消息内容</span><br><span class="line"> * @return &#123;Promise&#125;</span><br><span class="line"> * @api public</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">message</span>(<span class="params">type, name, content</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// some code</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件注释<br>文件注释，即声明在文件头部，描述文件的元信息。文件注释的基本规则：<br>文件描述，必选</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">* 这个文件的作用是什么</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>协议注释<br>对于引用的外部框架/库，以及我们自己写的开源库，头部会包含一些开源协议声明的注释，对于这部分的注释，我们是不希望也不能将之压缩，这时候需要使用 /<em>! </em>/ 的注释方式，如下：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span><br><span class="line"> * jQuery JavaScript Library v2.1.4</span><br><span class="line"> * http://jquery.com/</span><br><span class="line"> *</span><br><span class="line"> * Includes Sizzle.js</span><br><span class="line"> * http://sizzlejs.com/</span><br><span class="line"> *</span><br><span class="line"> * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors</span><br><span class="line"> * Released under the MIT license</span><br><span class="line"> * http://jquery.org/license</span><br><span class="line"> *</span><br><span class="line"> * Date: 2015-04-28T16:01Z</span><br><span class="line"> */</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>标记注释<br>平时的写代码的过程，可能会遇到某个地方是个隐藏的 bug, 因为某种原因还没法修复，或者是方法还有一些需要完成的功能，这时候我们需要加上相应的注释告知未来的自己或者是合作者，这里常用的有三种标签：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> 之后需要做的一些事</span></span><br><span class="line"><span class="comment">// <span class="doctag">FIXME:</span> 存在 bug, 最好能修复掉</span></span><br><span class="line"><span class="comment">// <span class="doctag">XXX:</span> 存在致命的 bug, 看到务必修复</span></span><br><span class="line">如下为示例代码：</span><br><span class="line"><span class="comment">// TODO 需要考虑参数个数不确定的情况</span></span><br><span class="line">funcion add(a, b) &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// FIXME status 不为 1 的情况没有考虑</span></span><br><span class="line">    <span class="keyword">if</span> (data.status === <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="label">XXX 异常会导致系统挂掉</span></span></span><br><span class="line"><span class="built_in">JSON</span>.parse(data);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="cihx0llz20004wwvey8qbyyyk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript，前端规范/">javascript，前端规范</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          github+hexo写文章上传图片等常用操作记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div class="ds-thread" data-thread-key="cihx0llz20004wwvey8qbyyyk" data-title="js-standard" data-url="http://jmingzi.github.io/2015/12/04/js-standard/"></div>
+</section>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jmingzi-git"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript，前端规范/">javascript，前端规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript，前端规范/" style="font-size: 10px;">javascript，前端规范</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">文章归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/">github+hexo写文章上传图片等常用操作记录</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/04/js-standard/">js-standard</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/04/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Jmingzi<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
+      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256906721'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256906721%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">档案</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
