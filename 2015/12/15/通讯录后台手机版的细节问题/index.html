@@ -3,19 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Jmingzi</title>
+  <title>通讯录后台手机版的细节问题(设备像素比) | Jmingzi</title>
   <meta name="baidu-site-verification" content="a6gTRDn5X8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于1234567891011&amp;#123;  &quot;name&quot; : &quot;Jmingzi&quot;,  &quot;main&quot; : &quot;Front-end Development Engineer&quot;,  &quot;description&quot; : &quot;A humorous man，and 有目标，有追求，爱车，爱生活...and so on&quot;,  &quot;address&quot; : &quot;浙江杭州&quot;,  &quot;dependencies&quot; : &amp;#123;">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jmingzi">
-<meta property="og:url" content="http://jmingzi.github.io/about/index.html">
+  <meta name="description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
+关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
+关于H5 history API - 问题收集参考1、HTML5的History">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通讯录后台手机版的细节问题(设备像素比)">
+<meta property="og:url" content="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/index.html">
 <meta property="og:site_name" content="Jmingzi">
-<meta property="og:description" content="关于1234567891011&amp;#123;  &quot;name&quot; : &quot;Jmingzi&quot;,  &quot;main&quot; : &quot;Front-end Development Engineer&quot;,  &quot;description&quot; : &quot;A humorous man，and 有目标，有追求，爱车，爱生活...and so on&quot;,  &quot;address&quot; : &quot;浙江杭州&quot;,  &quot;dependencies&quot; : &amp;#123;">
-<meta property="og:updated_time" content="2015-12-09T01:30:31.568Z">
+<meta property="og:description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
+关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
+关于H5 history API - 问题收集参考1、HTML5的History">
+<meta property="og:updated_time" content="2015-12-15T12:46:55.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jmingzi">
-<meta name="twitter:description" content="关于1234567891011&amp;#123;  &quot;name&quot; : &quot;Jmingzi&quot;,  &quot;main&quot; : &quot;Front-end Development Engineer&quot;,  &quot;description&quot; : &quot;A humorous man，and 有目标，有追求，爱车，爱生活...and so on&quot;,  &quot;address&quot; : &quot;浙江杭州&quot;,  &quot;dependencies&quot; : &amp;#123;">
+<meta name="twitter:title" content="通讯录后台手机版的细节问题(设备像素比)">
+<meta name="twitter:description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
+关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
+关于H5 history API - 问题收集参考1、HTML5的History">
   
     <link rel="alternative" href="/atom.xml" title="Jmingzi" type="application/atom+xml">
   
@@ -67,38 +73,93 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-通讯录后台手机版的细节问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2015-12-09T01:27:19.000Z" itemprop="datePublished">2015-12-09</time>
+    <a href="/2015/12/15/通讯录后台手机版的细节问题/" class="article-date">
+  <time datetime="2015-12-15T12:38:17.000Z" itemprop="datePublished">2015-12-15</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通讯录后台手机版的细节问题(设备像素比)
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="关于">关于</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "name" : "Jmingzi",</span><br><span class="line">  "main" : "Front-end Development Engineer",</span><br><span class="line">  "description" : "A humorous man，and 有目标，有追求，爱车，爱生活...and so on",</span><br><span class="line">  "address" : "浙江杭州",</span><br><span class="line">  "dependencies" : &#123;</span><br><span class="line">    "Jiameil" : "1.3.1.4",</span><br><span class="line">    "..."</span><br><span class="line">  &#125;,</span><br><span class="line">  "future" : "All stack Engineer"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="链接">链接</h3><p><a href="http://ymblog.net" target="_blank" rel="external">生活博客</a> - 仿<code>简书</code>首页自定义wp主题，<code>Jiameil</code><br><a href="http://jmingzi.github.io">技术博客</a> - 2015/12/02始建<br><a href="http://ymblog.net/demo/mywork" target="_blank" rel="external">作品集</a> - 2015/07/20出来实习后截止   </p>
-<h3 id="附">附</h3><p>朋友，天黑了，看完最后一个字再走好咩？<br>如果你也爱前端，欢迎互加友链，互相交流。<br>可在博客留言板说明。</p>
+        <p><a href="https://github.com/JMingZI/book_mark/issues/1" target="_blank" rel="external">关于app客户端内嵌网页，数据显示同步的问题 #1</a>  </p>
+<p><strong>关于设备像素比</strong> - 问题收集参考<br>1、<a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a><br>2、<a href="http://www.tuicool.com/articles/ZRv6bun" target="_blank" rel="external">再谈mobile web retina 下 1px 边框解决方案</a><br>3、<a href="http://www.w3cplus.com/css/the-mobile-web-css-image-replacement-for-retina-display-devices.html" target="_blank" rel="external">移动Web——CSS为Retina屏幕替换图片</a><br>4、<a href="http://www.33lc.com/article/17295.html" target="_blank" rel="external">retina屏幕是什么 retina显示屏的好处和缺点</a></p>
+<p><strong>关于H5 history API</strong> - 问题收集参考<br>1、<a href="http://blog.gmw.cn/blog-129241-384716.html" target="_blank" rel="external">HTML5的History API介绍</a><br>2、<a href="http://www.zhihu.com/question/24326661" target="_blank" rel="external">javascript怎么不刷新页面改变url地址？js路由</a><br>3、<a href="http://www.cnblogs.com/08shiyan/p/4053878.html" target="_blank" rel="external">使用ajax和js无刷新改变页面内容和地址栏URL</a>  </p>
+<p><strong>原文引用：</strong></p>
+<blockquote>
+<p>1、内容描述： </p>
+<ul>
+<li>现在有这样一个通讯录部门层级列表，一层一层可点击，同时可以多选</li>
+<li>页面底部有一个<code>div.box</code>，用于存放已选择的部门</li>
+<li>如果页面可以<code>前进/后退</code>，需要始终在<code>div.box</code>中显示我多选了，或者取消选择了的部门结果，请问用于解决的办法应该是怎样？</li>
+</ul>
+<p>2、我现在的做法：</p>
+<ul>
+<li>不是用的异步，因为用了异步后，页面的返回就没效果了，</li>
+<li>每个部门的id，通过<code>search</code>查询字符串传递，</li>
+<li>将已选择的id也通过<code>search</code>查询字符串传递给下一页，然后通过一个接口去获取当前参数（由id组成的字符串）下的部门名和id，然后显示在已选择的<code>div.box</code>中，</li>
+</ul>
+<p>3、这种做法带来的问题：</p>
+<ul>
+<li>在当前列表选择几个部门后，进入下个列表，再选择几个部门，点击返回，上一页选的部门就不在了</li>
+</ul>
+<p>4、由这种问题我想到的解决办法：</p>
+<ul>
+<li>通过<code>h5</code>的<code>history API</code>提供的<code>replaceState(data, title[, url])</code>，来修改当前url，每当进入该页面的时候都会根据当前查询字符串中的一个参数（由id组成的字符串）去请求一个接口获得当前已选择的部门，展示在<code>div.box</code>中。</li>
+<li>每次<code>后退/前进</code>后，<code>div.box</code>中都会显示上一次历史操作中自己选择的部门，而不是说把几次选择，取消的操作合并后的结果。</li>
+</ul>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/about/index.html" data-id="cii7dw60s0003wwvenqklv3y1" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cii7dw60s0004wwvetcd06adp" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2015/12/15/通讯录后台手机版的细节问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/13/偶遇Zepto-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">偶遇Zepto.js</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
 <section id="comments">
-  <div class="ds-thread" data-thread-key="cii7dw60s0003wwvenqklv3y1" data-title="undefined" data-url="http://jmingzi.github.io/about/index.html"></div>
+  <div class="ds-thread" data-thread-key="cii7dw60s0004wwvetcd06adp" data-title="通讯录后台手机版的细节问题" data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/"></div>
 </section>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"jmingzi-git"};
