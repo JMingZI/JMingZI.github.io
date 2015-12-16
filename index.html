@@ -90,38 +90,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/JMingZI/book_mark/issues/1" target="_blank" rel="external">关于app客户端内嵌网页，数据显示同步的问题 #1</a>  </p>
-<p><strong>关于设备像素比</strong> - 问题收集参考<br>1、<a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a><br>2、<a href="http://www.tuicool.com/articles/ZRv6bun" target="_blank" rel="external">再谈mobile web retina 下 1px 边框解决方案</a><br>3、<a href="http://www.w3cplus.com/css/the-mobile-web-css-image-replacement-for-retina-display-devices.html" target="_blank" rel="external">移动Web——CSS为Retina屏幕替换图片</a><br>4、<a href="http://www.33lc.com/article/17295.html" target="_blank" rel="external">retina屏幕是什么 retina显示屏的好处和缺点</a></p>
-<p><strong>关于H5 history API</strong> - 问题收集参考<br>1、<a href="http://blog.gmw.cn/blog-129241-384716.html" target="_blank" rel="external">HTML5的History API介绍</a><br>2、<a href="http://www.zhihu.com/question/24326661" target="_blank" rel="external">javascript怎么不刷新页面改变url地址？js路由</a><br>3、<a href="http://www.cnblogs.com/08shiyan/p/4053878.html" target="_blank" rel="external">使用ajax和js无刷新改变页面内容和地址栏URL</a>  </p>
-<p><strong>原文引用：</strong></p>
-<blockquote>
-<p>1、内容描述： </p>
-<ul>
-<li>现在有这样一个通讯录部门层级列表，一层一层可点击，同时可以多选</li>
-<li>页面底部有一个<code>div.box</code>，用于存放已选择的部门</li>
-<li>如果页面可以<code>前进/后退</code>，需要始终在<code>div.box</code>中显示我多选了，或者取消选择了的部门结果，请问用于解决的办法应该是怎样？</li>
-</ul>
-<p>2、我现在的做法：</p>
-<ul>
-<li>不是用的异步，因为用了异步后，页面的返回就没效果了，</li>
-<li>每个部门的id，通过<code>search</code>查询字符串传递，</li>
-<li>将已选择的id也通过<code>search</code>查询字符串传递给下一页，然后通过一个接口去获取当前参数（由id组成的字符串）下的部门名和id，然后显示在已选择的<code>div.box</code>中，</li>
-</ul>
-<p>3、这种做法带来的问题：</p>
-<ul>
-<li>在当前列表选择几个部门后，进入下个列表，再选择几个部门，点击返回，上一页选的部门就不在了</li>
-</ul>
-<p>4、由这种问题我想到的解决办法：</p>
-<ul>
-<li>通过<code>h5</code>的<code>history API</code>提供的<code>replaceState(data, title[, url])</code>，来修改当前url，每当进入该页面的时候都会根据当前查询字符串中的一个参数（由id组成的字符串）去请求一个接口获得当前已选择的部门，展示在<code>div.box</code>中。</li>
-<li>每次<code>后退/前进</code>后，<code>div.box</code>中都会显示上一次历史操作中自己选择的部门，而不是说把几次选择，取消的操作合并后的结果。</li>
-</ul>
-</blockquote>
-
+        <p><a href="https://github.com/JMingZI/book_mark/issues/1">关于app客户端内嵌网页，数据显示同步的问题 #1</a>  </p>
+<p><strong>关于设备像素比</strong> - 问题收集参考<br>1、<a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/">设备像素比devicePixelRatio简单介绍</a><br>2、<a href="http://www.tuicool.com/articles/ZRv6bun">再谈mobile web retina 下 1px 边框解决方案</a><br>3、<a href="http://www.w3cplus.com/css/the-mobile-web-css-image-replacement-for-retina-display-devices.html">移动Web——CSS为Retina屏幕替换图片</a><br>4、<a href="http://www.33lc.com/article/17295.html">retina屏幕是什么 retina显示屏的好处和缺点</a></p>
+<p><strong>关于H5 history API</strong> - 问题收集参考<br>1、<a href="http://blog.gmw.cn/blog-129241-384716.html">HTML5的History API介绍</a><br>2、<a href="http://www.zhihu.com/question/24326661">javascript怎么不刷新页面改变url地址？js路由</a><br>3、<a href="http://www.cnblogs.com/08shiyan/p/4053878.html">使用ajax和js无刷新改变页面内容和地址栏URL</a><br>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/15/通讯录后台手机版的细节问题/#more">...More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cii7dxcvl0004osve9nmqcw8o" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cii8lak880004gsve3kccnlry" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
@@ -167,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cii7dxcvl0007osvel4ln88ef" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cii8lak8o0007gsvezlhyd3vn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cii7dxcv60000osven9k2399w" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cii8lak7t0000gsveg46h9jzi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chart-js-echarts-js-css3兼容ie78/">chart.js,echarts.js,css3兼容ie78</a></li></ul>
@@ -255,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cii7dxcw1000hosvevv11l5rz" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cii8lak8o000hgsve5vytfyho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -302,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cii7dxcvl0008osve6bignirl" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cii8lak8o0008gsveahze9fb7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -345,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cii7dxcw1000kosvek51bqiq5" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cii8lak8o000kgsve8if2apif" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -397,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="cii7dxcvl000bosvehhu8e27k" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="cii8lak8o000bgsve2vbxvkwh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript，前端规范/">javascript，前端规范</a></li></ul>
@@ -442,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/hello-world/" data-id="cii7dxcvl000eosvecmqkt77x" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/hello-world/" data-id="cii8lak8o000egsvegrcy3pdv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
