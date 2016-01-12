@@ -68,6 +68,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-前端构建神器fis3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/12/前端构建神器fis3/" class="article-date">
+  <time datetime="2016-01-12T07:58:48.000Z" itemprop="datePublished">2016-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/12/前端构建神器fis3/">前端构建神器fis3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直想着要是有一款工具能够轻松解决构建流程就OK了，直到遇到<code>FIS3</code>。</p>
+<blockquote>
+<p>FIS3 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。</p>
+</blockquote>
+<p>我觉得<code>FIS3</code>的功能很实在，具体，代码简介。下面说说我觉得最喜欢的功能：</p>
+<p>###mock 假数据模拟</p>
+<p>默认情况下，在你的项目的根目录下需要新建<code>config和test</code>目录，以便存放假数据和配置。在<code>test</code>目录中，新建<code>sample.json</code>并存放内容，然后在配置文件中指定请求的<code>uri</code></p>
+<p><code>server.config</code>：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^\<span class="regexp">/api\/</span>user$ <span class="regexp">/test/</span>sample.json</span><br></pre></td></tr></table></figure>
+<p>指定的是根目录下的<code>api/user</code>，重新映射到我们测试的文件。</p>
+<p>而我们修改<code>server.conf</code>的位置到<code>test</code>目录，需要在<code>fis-conf.js</code>中修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'/test/**'</span>, &#123;</span><br><span class="line">  release: <span class="string">'$0'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fis.match(<span class="string">'/test/server.conf'</span>, &#123;</span><br><span class="line">  release: <span class="string">'/config/server.conf'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当然这是静态的json文件，我们更多的是模拟接口请求，记得以前听别人介绍使用的<code>nodejs</code>模拟请求返回结果，而fis3实质也是通过node实现，不过不是很熟悉node的同学直接去写node实现有点困难，来看看fis3如何实现：</p>
+<ul>
+<li>在<code>server.conf</code>中指定接口的映射，<code>rewrite ^\/api\/dynamic\/time$ /test/dynamic.js</code></li>
+<li>在<code>dynamic.js</code>中实现返回的数据就可以了，</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.write(<span class="string">'Hello world '</span>);</span><br><span class="line">  <span class="comment">// set custom header.</span></span><br><span class="line">  <span class="comment">// res.setHeader('xxxx', 'xxx');</span></span><br><span class="line">  res.end(<span class="string">'The time is '</span> + <span class="built_in">Date</span>.now());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后直接输入地址查看请求:<code>http://127.0.0.1:8080/api/dynamic/time</code></p>
+<p>###调试<br>记得之前使用<code>webpack</code>的<code>webpack-server-dev</code>插件时，也是可以达到这种实时刷新浏览器的效果，但实现起来比fis3复杂。</p>
+<p>fis3实现步骤：</p>
+<ul>
+<li>构建项目到本地默认服务器运行目录<code>www</code>：<code>fis3 release</code>不指定path即可。可输入<code>fis3 server open</code>打开这个目录。</li>
+<li><code>fis3 server start</code>启动项目，会自动打开浏览器。</li>
+<li><code>fis3 release -wL</code>，文件修改自动构建发布后，浏览器能自动刷新。</li>
+</ul>
+<p>####发布到远端机器<br>自动<code>deploy</code>到测试服务器也是一种不错的体验，虽然我觉得用的地方不多。</p>
+<p>###内容嵌入</p>
+<blockquote>
+<p>嵌入资源即内容嵌入，可以为工程师提供诸如图片base64嵌入到css、js里，前端模板编译到js文件中，将js、css、html拆分成几个文件最后合并到一起的能力。有了这项能力，可以有效的减少http请求数，提升工程的可维护性。 fis不建议用户使用内容嵌入能力作为组件化拆分的手段，因为声明依赖能力会更适合组件化开发。</p>
+</blockquote>
+<ul>
+<li>html中嵌入图片base64</li>
+<li>html中嵌入样式文件</li>
+<li>html中嵌入脚本资源</li>
+<li>html中嵌入页面文件，<code>&lt;link rel=&quot;import&quot; href=&quot;demo.html?__inline&quot;&gt;</code></li>
+</ul>
+<p>还有包括在js中嵌入资源，在css中嵌入资源等等。</p>
+<p>###基本的构建</p>
+<p>可以使用sass，less语法，需要安装插件：<code>npm install -g fis-parser-sass</code></p>
+<p>在配置文件中配置:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'*.scss'</span>, &#123;</span><br><span class="line">  parser: fis.plugin(<span class="string">'sass'</span>),</span><br><span class="line">  rExt: <span class="string">'.css'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>合并页面请求的散列文件，比如将多个css文件合并成一个：<code>npm install -g fis3-postpackager-loader</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'::packager'</span>, &#123;</span><br><span class="line">  postpackager: fis.plugin(<span class="string">'loader'</span>, &#123;</span><br><span class="line">    <span class="comment">//基于页面的打包方式</span></span><br><span class="line">    allInOne: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>很明显，这里用到了<code>allInOne: true</code>，就不会对所有的css文件进行合并，而是将该页面用到的css进行合并，并且不用指定合并的路径。</p>
+<p>如果没有加这个属性，就需要指定文件的合并输出路径：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'*.&#123;css,sass&#125;'</span>, &#123;</span><br><span class="line">  packTo: <span class="string">'/static/aio.css'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fis.match(<span class="string">'*.js'</span>, &#123;</span><br><span class="line">  packTo: <span class="string">'/static/aio.js'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>###CssSprite图片合并</p>
+<blockquote>
+<p>压缩了静态资源，我们还可以对图片进行合并，来减少请求数量。</p>
+<p>FIS3 提供了比较简易、使用方便的图片合并工具。通过配置即可调用此工具并对资源进行合并。</p>
+<p>FIS3 构建会对 CSS 中，路径带 ?__sprite 的图片进行合并。为了节省编译的时间，分配到 useSprite: true 的 CSS 文件才会被处理。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启用 fis-spriter-csssprites 插件</span></span><br><span class="line">fis.match(<span class="string">'::package'</span>, &#123;</span><br><span class="line">  spriter: fis.plugin(<span class="string">'csssprites'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对 CSS 进行图片合并</span></span><br><span class="line">fis.match(<span class="string">'*.css'</span>, &#123;</span><br><span class="line">  <span class="comment">// 给匹配到的文件分配属性 `useSprite`</span></span><br><span class="line">  useSprite: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>###最后</p>
+<p>一直以来，我觉得前端的这些构建工具，模块化工具等等，虽然自己学的不咋的，可能就会觉得不实用，对于不是很复杂的项目来说，反而会觉得多此一举，当然比如<code>grunt,gulp</code>肯定是有用的。</p>
+<p>但今天看了<code>fis3</code>的文档，就觉得，真实用，完全可以轻松使用而不需要太多的精力去构建等等。</p>
+<p>文档地址：<a href="http://fis.baidu.com/fis3/docs/beginning/intro.html" target="_blank" rel="external">FIS3</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jmingzi.github.io/2016/01/12/前端构建神器fis3/" data-id="cijb5n2n7000a08veydu1wqfo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-flex从听说到认识" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/23/flex从听说到认识/" class="article-date">
@@ -107,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="ciiiawngx000quoveam88a4tc" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="cijb5n2nn000r08vem1l4fhry" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -155,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="ciiiawngi0007uovea175u2n8" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="cijb5n2n7000708vetx36m1yy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js正则/">js正则</a></li></ul>
@@ -208,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="ciiiawngi000euove9l4g2jqw" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="cijb5n2n7000f08vevihuxo5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="ciiiawngi0004uoveb6v6aaol" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijb5n2mr000408vea72fhrhv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
@@ -297,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="ciiiawngi000auove9z2usfna" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cijb5n2n7000b08venpeqwad6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="ciiiawng20000uoveib91yurg" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cijb5n2k6000008vepfat8nbu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chart-js-echarts-js-css3兼容ie78/">chart.js,echarts.js,css3兼容ie78</a></li></ul>
@@ -385,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="ciiiawngx000luoveuwwoe0np" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cijb5n2nn000m08ves9h716e7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -432,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="ciiiawngi000buoveu3vg9yod" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cijb5n2n7000c08vew41mqgch" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -475,62 +569,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="ciiiawngx000ouoveufssb9mo" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cijb5n2nn000p08ve9r26r2pe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js-standard" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/04/js-standard/" class="article-date">
-  <time datetime="2015-12-04T10:22:33.000Z" itemprop="datePublished">2015-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/04/js-standard/">js-standard</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="准备">准备</h1><blockquote>
-<p> 如何用markdown写作：<a href="http://wowubuntu.com/markdown/index.html">关于markdown的语法完整说明</a><br> sublime text3 markdown语法插件 <strong>markdown preview</strong></p>
-</blockquote>
-<ul>
-<li><p>用法<br>1、打开package install（ctrl+shift+p）<br>2、找到install package<br>3、搜索<strong>markdown preview</strong></p>
-</li>
-<li><p>另外规范空格缩进的问题，打开preferences-&gt; settings-user 加上 </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34;tab_size&#34;: 2,&#10;&#34;translate_tabs_to_spaces&#34;: true</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/04/js-standard/#more">...More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/js-standard/" data-id="ciiiawngi000fuovejde8qqso" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript，前端规范/">javascript，前端规范</a></li></ul>
 
     </footer>
   </div>
@@ -572,7 +614,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">文章归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -582,6 +624,10 @@
     <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/12/前端构建神器fis3/">前端构建神器fis3</a>
+          </li>
         
           <li>
             <a href="/2015/12/23/flex从听说到认识/">flex从听说到认识</a>
@@ -599,10 +645,6 @@
             <a href="/2015/12/15/通讯录后台手机版的细节问题/">通讯录后台手机版的细节问题(设备像素比)</a>
           </li>
         
-          <li>
-            <a href="/2015/12/13/偶遇Zepto-js/">偶遇Zepto.js</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -615,7 +657,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 Jmingzi. 我的生活博客：<a href="http://ymblog.net" target="_blank">Jming依然</a><br>
+      &copy; 2016 Jmingzi. 我的生活博客：<a href="http://ymblog.net" target="_blank">Jming依然</a><br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a><br>
       <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256906721'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1256906721%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
     </div>
