@@ -96,17 +96,15 @@
 <blockquote>
 <p>项目需求，在安卓中使用自定义的<code>confirm</code>，在iOS中使用系统的，那我就只有自定义这个方法了，在方法中判断系统类别，分别执行不同的操作。</p>
 </blockquote>
-<h3 id="使用回调函数及传参">使用回调函数及传参</h3><p>通常我们使用<code>confirm</code>的时候一般是删除，需要传id，如：<code>del(&#39;确定删除？&#39;, id);</code></p>
-<p>1、定义我们的函数(伪代码)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myconfirms</span>(<span class="params">str, callFunction, params</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//判断系统</span></span><br><span class="line">  <span class="keyword">if</span>(!iOS)&#123;</span><br><span class="line">    <span class="comment">//1、显示遮罩</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//2、绑定确定事件</span></span><br><span class="line">    obj.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> callback == <span class="string">'function'</span>)&#123;</span><br><span class="line">        callFunction(params.id);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//执行系统自带的函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击确认后调用的函数</span></span><br><span class="line"><span class="keyword">var</span> delF = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line">myconfirms(<span class="string">"确认删除"</span>, delF, &#123;id: <span class="number">1</span>&#125;);</span><br></pre></td></tr></table></figure>
-<p>另外附上，判断安卓还是iOS：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> u = navigator.userAgent, app = navigator.appVersion;</span><br><span class="line"><span class="keyword">var</span> isiOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>); </span><br><span class="line"><span class="keyword">var</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/18/自定义js中confirm事件/#more">...More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/" data-id="cijjrktcv0007ewvec48hs0ln" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/" data-id="cijjrndlp0007n4vepmplwb9c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,65 +140,16 @@
 <blockquote>
 <p>FIS3 是面向前端的工程构建工具。解决前端工程中性能优化、资源加载（异步、同步、按需、预加载、依赖管理、合并、内嵌）、模块化开发、自动化工具、开发规范、代码部署等问题。</p>
 </blockquote>
-<p>我觉得<code>FIS3</code>的功能很实在，具体，代码简介。下面说说我觉得最喜欢的功能：</p>
-<p>###mock 假数据模拟</p>
-<p>默认情况下，在你的项目的根目录下需要新建<code>config和test</code>目录，以便存放假数据和配置。在<code>test</code>目录中，新建<code>sample.json</code>并存放内容，然后在配置文件中指定请求的<code>uri</code></p>
-<p><code>server.config</code>：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rewrite ^\<span class="regexp">/api\/</span>user$ <span class="regexp">/test/</span>sample.json</span><br></pre></td></tr></table></figure>
-<p>指定的是根目录下的<code>api/user</code>，重新映射到我们测试的文件。</p>
-<p>而我们修改<code>server.conf</code>的位置到<code>test</code>目录，需要在<code>fis-conf.js</code>中修改：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'/test/**'</span>, &#123;</span><br><span class="line">  release: <span class="string">'$0'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fis.match(<span class="string">'/test/server.conf'</span>, &#123;</span><br><span class="line">  release: <span class="string">'/config/server.conf'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>当然这是静态的json文件，我们更多的是模拟接口请求，记得以前听别人介绍使用的<code>nodejs</code>模拟请求返回结果，而fis3实质也是通过node实现，不过不是很熟悉node的同学直接去写node实现有点困难，来看看fis3如何实现：</p>
-<ul>
-<li>在<code>server.conf</code>中指定接口的映射，<code>rewrite ^\/api\/dynamic\/time$ /test/dynamic.js</code></li>
-<li>在<code>dynamic.js</code>中实现返回的数据就可以了，</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.write(<span class="string">'Hello world '</span>);</span><br><span class="line">  <span class="comment">// set custom header.</span></span><br><span class="line">  <span class="comment">// res.setHeader('xxxx', 'xxx');</span></span><br><span class="line">  res.end(<span class="string">'The time is '</span> + <span class="built_in">Date</span>.now());</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>然后直接输入地址查看请求:<code>http://127.0.0.1:8080/api/dynamic/time</code></p>
-<p>###调试<br>记得之前使用<code>webpack</code>的<code>webpack-server-dev</code>插件时，也是可以达到这种实时刷新浏览器的效果，但实现起来比fis3复杂。</p>
-<p>fis3实现步骤：</p>
-<ul>
-<li>构建项目到本地默认服务器运行目录<code>www</code>：<code>fis3 release</code>不指定path即可。可输入<code>fis3 server open</code>打开这个目录。</li>
-<li><code>fis3 server start</code>启动项目，会自动打开浏览器。</li>
-<li><code>fis3 release -wL</code>，文件修改自动构建发布后，浏览器能自动刷新。</li>
-</ul>
-<p>####发布到远端机器<br>自动<code>deploy</code>到测试服务器也是一种不错的体验，虽然我觉得用的地方不多。</p>
-<p>###内容嵌入</p>
-<blockquote>
-<p>嵌入资源即内容嵌入，可以为工程师提供诸如图片base64嵌入到css、js里，前端模板编译到js文件中，将js、css、html拆分成几个文件最后合并到一起的能力。有了这项能力，可以有效的减少http请求数，提升工程的可维护性。 fis不建议用户使用内容嵌入能力作为组件化拆分的手段，因为声明依赖能力会更适合组件化开发。</p>
-</blockquote>
-<ul>
-<li>html中嵌入图片base64</li>
-<li>html中嵌入样式文件</li>
-<li>html中嵌入脚本资源</li>
-<li>html中嵌入页面文件，<code>&lt;link rel=&quot;import&quot; href=&quot;demo.html?__inline&quot;&gt;</code></li>
-</ul>
-<p>还有包括在js中嵌入资源，在css中嵌入资源等等。</p>
-<p>###基本的构建</p>
-<p>可以使用sass，less语法，需要安装插件：<code>npm install -g fis-parser-sass</code></p>
-<p>在配置文件中配置:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'*.scss'</span>, &#123;</span><br><span class="line">  parser: fis.plugin(<span class="string">'sass'</span>),</span><br><span class="line">  rExt: <span class="string">'.css'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>合并页面请求的散列文件，比如将多个css文件合并成一个：<code>npm install -g fis3-postpackager-loader</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'::packager'</span>, &#123;</span><br><span class="line">  postpackager: fis.plugin(<span class="string">'loader'</span>, &#123;</span><br><span class="line">    <span class="comment">//基于页面的打包方式</span></span><br><span class="line">    allInOne: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>很明显，这里用到了<code>allInOne: true</code>，就不会对所有的css文件进行合并，而是将该页面用到的css进行合并，并且不用指定合并的路径。</p>
-<p>如果没有加这个属性，就需要指定文件的合并输出路径：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fis.match(<span class="string">'*.&#123;css,sass&#125;'</span>, &#123;</span><br><span class="line">  packTo: <span class="string">'/static/aio.css'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fis.match(<span class="string">'*.js'</span>, &#123;</span><br><span class="line">  packTo: <span class="string">'/static/aio.js'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>###CssSprite图片合并</p>
-<blockquote>
-<p>压缩了静态资源，我们还可以对图片进行合并，来减少请求数量。</p>
-<p>FIS3 提供了比较简易、使用方便的图片合并工具。通过配置即可调用此工具并对资源进行合并。</p>
-<p>FIS3 构建会对 CSS 中，路径带 ?__sprite 的图片进行合并。为了节省编译的时间，分配到 useSprite: true 的 CSS 文件才会被处理。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启用 fis-spriter-csssprites 插件</span></span><br><span class="line">fis.match(<span class="string">'::package'</span>, &#123;</span><br><span class="line">  spriter: fis.plugin(<span class="string">'csssprites'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对 CSS 进行图片合并</span></span><br><span class="line">fis.match(<span class="string">'*.css'</span>, &#123;</span><br><span class="line">  <span class="comment">// 给匹配到的文件分配属性 `useSprite`</span></span><br><span class="line">  useSprite: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>###最后</p>
-<p>一直以来，我觉得前端的这些构建工具，模块化工具等等，虽然自己学的不咋的，可能就会觉得不实用，对于不是很复杂的项目来说，反而会觉得多此一举，当然比如<code>grunt,gulp</code>肯定是有用的。</p>
-<p>但今天看了<code>fis3</code>的文档，就觉得，真实用，完全可以轻松使用而不需要太多的精力去构建等等。</p>
-<p>文档地址：<a href="http://fis.baidu.com/fis3/docs/beginning/intro.html" target="_blank" rel="external">FIS3</a></p>
-
+<p>我觉得<code>FIS3</code>的功能很实在，具体，代码简介。下面说说我觉得最喜欢的功能：<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/12/前端构建神器fis3/#more">...More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2016/01/12/前端构建神器fis3/" data-id="cijjrktd1000bewvebof3mn6l" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2016/01/12/前端构建神器fis3/" data-id="cijjrndlt000bn4vejywwbjjs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="cijjrktdq000sewvesaz26mfz" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="cijjrndmh000sn4vepxvncj1m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -297,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="cijjrktcy0008ewveo1p80cwi" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="cijjrndlr0008n4vegcd2tfir" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js正则/">js正则</a></li></ul>
@@ -350,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="cijjrktd8000gewvesjkkb2ir" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="cijjrndly000gn4veh7dcylxh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijjrktco0004ewvegruz25to" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijjrndlm0004n4veokrctzza" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
@@ -439,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cijjrktd3000cewvermf6tzb4" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cijjrndlu000cn4ve2w1mzca6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cijjrkt690000ewvep2yb7qfw" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cijjrndl60000n4ve2naaig61" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chart-js-echarts-js-css3兼容ie78/">chart.js,echarts.js,css3兼容ie78</a></li></ul>
@@ -527,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cijjrktdh000newve3aqubetg" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cijjrndm8000nn4ve7ysor2a3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -574,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cijjrktd5000dewvev1d9c5fj" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cijjrndlw000dn4vefm5e4c8d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
