@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>通讯录后台手机版的细节问题(设备像素比) | Jmingzi</title>
+  <title>自定义js中confirm事件 | Jmingzi</title>
   <meta name="baidu-site-verification" content="a6gTRDn5X8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
-关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
-关于H5 history API - 问题收集参考1、HTML5的History">
+  <meta name="description" content="最近拿到设计稿，不能使用系统浏览器自带的询问框样式，而系统浏览器的样式是无法修改的，当然修改样式是无需多说的，重要的是如何实现原生的阻塞“效果”，这里我只能说能到达这种效果。
+那就是使用回调函数。
+对于询问框confirm而言，取消事件和警告框alert的确定事件一样，仅仅是隐藏或移除了该元素，而当confirm中我们点击确定后要执行相应的函数，在原生js中，不点击按钮之前，所有事件都是处于阻塞没">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通讯录后台手机版的细节问题(设备像素比)">
-<meta property="og:url" content="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/index.html">
+<meta property="og:title" content="自定义js中confirm事件">
+<meta property="og:url" content="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/index.html">
 <meta property="og:site_name" content="Jmingzi">
-<meta property="og:description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
-关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
-关于H5 history API - 问题收集参考1、HTML5的History">
-<meta property="og:updated_time" content="2015-12-16T09:01:57.876Z">
+<meta property="og:description" content="最近拿到设计稿，不能使用系统浏览器自带的询问框样式，而系统浏览器的样式是无法修改的，当然修改样式是无需多说的，重要的是如何实现原生的阻塞“效果”，这里我只能说能到达这种效果。
+那就是使用回调函数。
+对于询问框confirm而言，取消事件和警告框alert的确定事件一样，仅仅是隐藏或移除了该元素，而当confirm中我们点击确定后要执行相应的函数，在原生js中，不点击按钮之前，所有事件都是处于阻塞没">
+<meta property="og:updated_time" content="2016-01-18T09:23:04.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通讯录后台手机版的细节问题(设备像素比)">
-<meta name="twitter:description" content="关于app客户端内嵌网页，数据显示同步的问题 #1  
-关于设备像素比 - 问题收集参考1、设备像素比devicePixelRatio简单介绍2、再谈mobile web retina 下 1px 边框解决方案3、移动Web——CSS为Retina屏幕替换图片4、retina屏幕是什么 retina显示屏的好处和缺点
-关于H5 history API - 问题收集参考1、HTML5的History">
+<meta name="twitter:title" content="自定义js中confirm事件">
+<meta name="twitter:description" content="最近拿到设计稿，不能使用系统浏览器自带的询问框样式，而系统浏览器的样式是无法修改的，当然修改样式是无需多说的，重要的是如何实现原生的阻塞“效果”，这里我只能说能到达这种效果。
+那就是使用回调函数。
+对于询问框confirm而言，取消事件和警告框alert的确定事件一样，仅仅是隐藏或移除了该元素，而当confirm中我们点击确定后要执行相应的函数，在原生js中，不点击按钮之前，所有事件都是处于阻塞没">
   
     <link rel="alternative" href="/atom.xml" title="Jmingzi" type="application/atom+xml">
   
@@ -73,10 +73,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-通讯录后台手机版的细节问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-自定义js中confirm事件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/15/通讯录后台手机版的细节问题/" class="article-date">
-  <time datetime="2015-12-15T12:38:17.000Z" itemprop="datePublished">2015-12-15</time>
+    <a href="/2016/01/18/自定义js中confirm事件/" class="article-date">
+  <time datetime="2016-01-18T09:22:48.000Z" itemprop="datePublished">2016-01-18</time>
 </a>
     
   </div>
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      通讯录后台手机版的细节问题(设备像素比)
+      自定义js中confirm事件
     </h1>
   
 
@@ -95,60 +95,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/JMingZI/book_mark/issues/1" target="_blank" rel="external">关于app客户端内嵌网页，数据显示同步的问题 #1</a>  </p>
-<p><strong>关于设备像素比</strong> - 问题收集参考<br>1、<a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/" target="_blank" rel="external">设备像素比devicePixelRatio简单介绍</a><br>2、<a href="http://www.tuicool.com/articles/ZRv6bun" target="_blank" rel="external">再谈mobile web retina 下 1px 边框解决方案</a><br>3、<a href="http://www.w3cplus.com/css/the-mobile-web-css-image-replacement-for-retina-display-devices.html" target="_blank" rel="external">移动Web——CSS为Retina屏幕替换图片</a><br>4、<a href="http://www.33lc.com/article/17295.html" target="_blank" rel="external">retina屏幕是什么 retina显示屏的好处和缺点</a></p>
-<p><strong>关于H5 history API</strong> - 问题收集参考<br>1、<a href="http://blog.gmw.cn/blog-129241-384716.html" target="_blank" rel="external">HTML5的History API介绍</a><br>2、<a href="http://www.zhihu.com/question/24326661" target="_blank" rel="external">javascript怎么不刷新页面改变url地址？js路由</a><br>3、<a href="http://www.cnblogs.com/08shiyan/p/4053878.html" target="_blank" rel="external">使用ajax和js无刷新改变页面内容和地址栏URL</a><br><a id="more"></a><br><strong>原文引用：</strong></p>
+        <p>最近拿到设计稿，不能使用系统浏览器自带的询问框样式，而系统浏览器的样式是无法修改的，当然修改样式是无需多说的，重要的是如何实现原生的阻塞“效果”，这里我只能说能到达这种效果。</p>
+<p>那就是使用回调函数。</p>
+<p>对于询问框<code>confirm</code>而言，取消事件和警告框<code>alert</code>的确定事件一样，仅仅是隐藏或移除了该元素，而当<code>confirm</code>中我们点击确定后要执行相应的函数，在原生js中，不点击按钮之前，所有事件都是处于阻塞没发生的状态的。单线程的js，代码从上到下执行。</p>
 <blockquote>
-<p>1、内容描述： </p>
-<ul>
-<li>现在有这样一个通讯录部门层级列表，一层一层可点击，同时可以多选</li>
-<li>页面底部有一个<code>div.box</code>，用于存放已选择的部门</li>
-<li>如果页面可以<code>前进/后退</code>，需要始终在<code>div.box</code>中显示我多选了，或者取消选择了的部门结果，请问用于解决的办法应该是怎样？</li>
-</ul>
-<p>2、我现在的做法：</p>
-<ul>
-<li>不是用的异步，因为用了异步后，页面的返回就没效果了，</li>
-<li>每个部门的id，通过<code>search</code>查询字符串传递，</li>
-<li>将已选择的id也通过<code>search</code>查询字符串传递给下一页，然后通过一个接口去获取当前参数（由id组成的字符串）下的部门名和id，然后显示在已选择的<code>div.box</code>中，</li>
-</ul>
-<p>3、这种做法带来的问题：</p>
-<ul>
-<li>在当前列表选择几个部门后，进入下个列表，再选择几个部门，点击返回，上一页选的部门就不在了</li>
-</ul>
-<p>4、由这种问题我想到的解决办法：</p>
-<ul>
-<li>通过<code>h5</code>的<code>history API</code>提供的<code>replaceState(data, title[, url])</code>，来修改当前url，每当进入该页面的时候都会根据当前查询字符串中的一个参数（由id组成的字符串）去请求一个接口获得当前已选择的部门，展示在<code>div.box</code>中。</li>
-<li>每次<code>后退/前进</code>后，<code>div.box</code>中都会显示上一次历史操作中自己选择的部门，而不是说把几次选择，取消的操作合并后的结果。</li>
-</ul>
+<p>项目需求，在安卓中使用自定义的<code>confirm</code>，在iOS中使用系统的，那我就只有自定义这个方法了，在方法中判断系统类别，分别执行不同的操作。</p>
 </blockquote>
-
+<h3 id="使用回调函数及传参">使用回调函数及传参</h3><p>通常我们使用<code>confirm</code>的时候一般是删除，需要传id，如：<code>del(&#39;确定删除？&#39;, id);</code></p>
+<p>1、定义我们的函数(伪代码)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myconfirms</span>(<span class="params">str, callFunction, params</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//判断系统</span></span><br><span class="line">  <span class="keyword">if</span>(!iOS)&#123;</span><br><span class="line">    <span class="comment">//1、显示遮罩</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//2、绑定确定事件</span></span><br><span class="line">    obj.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> callback == <span class="string">'function'</span>)&#123;</span><br><span class="line">        callFunction(params.id);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//执行系统自带的函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击确认后调用的函数</span></span><br><span class="line"><span class="keyword">var</span> delF = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line">myconfirms(<span class="string">"确认删除"</span>, delF, &#123;id: <span class="number">1</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>另外附上，判断安卓还是iOS：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> u = navigator.userAgent, app = navigator.appVersion;</span><br><span class="line"><span class="keyword">var</span> isiOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>); </span><br><span class="line"><span class="keyword">var</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijjrktco0004ewvegruz25to" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/" data-id="cijjrktcv0007ewvec48hs0ln" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2015/12/18/webpack初体验-二/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          webpack初体验(二)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/12/13/偶遇Zepto-js/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/01/12/前端构建神器fis3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">偶遇Zepto.js</div>
+      <div class="article-nav-title">前端构建神器fis3</div>
     </a>
   
 </nav>
@@ -158,7 +133,7 @@
 
 
 <section id="comments">
-  <div class="ds-thread" data-thread-key="cijjrktco0004ewvegruz25to" data-title="通讯录后台手机版的细节问题" data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/"></div>
+  <div class="ds-thread" data-thread-key="cijjrktcv0007ewvec48hs0ln" data-title="自定义js中confirm事件" data-url="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/"></div>
 </section>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"jmingzi-git"};

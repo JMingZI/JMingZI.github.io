@@ -68,6 +68,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-自定义js中confirm事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/18/自定义js中confirm事件/" class="article-date">
+  <time datetime="2016-01-18T09:22:48.000Z" itemprop="datePublished">2016-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/18/自定义js中confirm事件/">自定义js中confirm事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近拿到设计稿，不能使用系统浏览器自带的询问框样式，而系统浏览器的样式是无法修改的，当然修改样式是无需多说的，重要的是如何实现原生的阻塞“效果”，这里我只能说能到达这种效果。</p>
+<p>那就是使用回调函数。</p>
+<p>对于询问框<code>confirm</code>而言，取消事件和警告框<code>alert</code>的确定事件一样，仅仅是隐藏或移除了该元素，而当<code>confirm</code>中我们点击确定后要执行相应的函数，在原生js中，不点击按钮之前，所有事件都是处于阻塞没发生的状态的。单线程的js，代码从上到下执行。</p>
+<blockquote>
+<p>项目需求，在安卓中使用自定义的<code>confirm</code>，在iOS中使用系统的，那我就只有自定义这个方法了，在方法中判断系统类别，分别执行不同的操作。</p>
+</blockquote>
+<h3 id="使用回调函数及传参">使用回调函数及传参</h3><p>通常我们使用<code>confirm</code>的时候一般是删除，需要传id，如：<code>del(&#39;确定删除？&#39;, id);</code></p>
+<p>1、定义我们的函数(伪代码)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myconfirms</span>(<span class="params">str, callFunction, params</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//判断系统</span></span><br><span class="line">  <span class="keyword">if</span>(!iOS)&#123;</span><br><span class="line">    <span class="comment">//1、显示遮罩</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//2、绑定确定事件</span></span><br><span class="line">    obj.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> callback == <span class="string">'function'</span>)&#123;</span><br><span class="line">        callFunction(params.id);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//执行系统自带的函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击确认后调用的函数</span></span><br><span class="line"><span class="keyword">var</span> delF = <span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line">myconfirms(<span class="string">"确认删除"</span>, delF, &#123;id: <span class="number">1</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>另外附上，判断安卓还是iOS：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> u = navigator.userAgent, app = navigator.appVersion;</span><br><span class="line"><span class="keyword">var</span> isiOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>); </span><br><span class="line"><span class="keyword">var</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; -<span class="number">1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jmingzi.github.io/2016/01/18/自定义js中confirm事件/" data-id="cijjrktcv0007ewvec48hs0ln" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-前端构建神器fis3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/12/前端构建神器fis3/" class="article-date">
@@ -152,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2016/01/12/前端构建神器fis3/" data-id="cijb5n2n7000a08veydu1wqfo" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2016/01/12/前端构建神器fis3/" data-id="cijjrktd1000bewvebof3mn6l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="cijb5n2nn000r08vem1l4fhry" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/23/flex从听说到认识/" data-id="cijjrktdq000sewvesaz26mfz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -249,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="cijb5n2n7000708vetx36m1yy" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/22/回顾js正则表达式/" data-id="cijjrktcy0008ewveo1p80cwi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js正则/">js正则</a></li></ul>
@@ -302,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="cijb5n2n7000f08vevihuxo5o" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/18/webpack初体验-二/" data-id="cijjrktd8000gewvesjkkb2ir" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijb5n2mr000408vea72fhrhv" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/15/通讯录后台手机版的细节问题/" data-id="cijjrktco0004ewvegruz25to" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devicePixelRatio/">devicePixelRatio</a></li></ul>
@@ -391,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cijb5n2n7000b08venpeqwad6" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/13/偶遇Zepto-js/" data-id="cijjrktd3000cewvermf6tzb4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cijb5n2k6000008vepfat8nbu" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/10/chart-js和echarts-js使用与css3兼容ie78的问题收集/" data-id="cijjrkt690000ewvep2yb7qfw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chart-js-echarts-js-css3兼容ie78/">chart.js,echarts.js,css3兼容ie78</a></li></ul>
@@ -479,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cijb5n2nn000m08ves9h716e7" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/github-hexo创建自己的静态博客/" data-id="cijjrktdh000newve3aqubetg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
@@ -526,53 +574,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cijb5n2n7000c08vew41mqgch" class="article-share-link">Share</a>
+      <a data-url="http://jmingzi.github.io/2015/12/08/webpack初体验/" data-id="cijjrktd5000dewvev1d9c5fj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-github-hexo写文章上传图片等常用操作记录" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/" class="article-date">
-  <time datetime="2015-12-04T11:37:26.000Z" itemprop="datePublished">2015-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/">github+hexo写文章上传图片等常用操作记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、关于上传图片到七牛">一、关于上传图片到七牛</h2><p>1、上传图片用的插件<a href="https://github.com/gyk001/hexo-qiniu-sync">hexo-qiniu-sync</a><br>配置代码：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">qiniu:</span></span><br><span class="line"><span class="label">  offline:</span> <span class="literal">false</span></span><br><span class="line"><span class="label">  sync:</span> <span class="literal">true</span></span><br><span class="line"><span class="label">  bucket:</span> mydata</span><br><span class="line"><span class="label">  access_key:</span> ***</span><br><span class="line"><span class="label">  secret_key:</span> ***</span><br><span class="line"><span class="label">  dirPrefix:</span> <span class="keyword">static</span></span><br><span class="line"><span class="label">  urlPrefix:</span> <span class="string">http:</span><span class="comment">//7u2jxw.com1.z0.glb.clouddn.com/static</span></span><br><span class="line"><span class="label">  local_dir:</span> <span class="keyword">static</span></span><br><span class="line"><span class="label">  update_exist:</span> <span class="literal">true</span></span><br><span class="line"><span class="label">  image:</span> </span><br><span class="line"><span class="label">    folder:</span> images</span><br><span class="line"><span class="label">    extend:</span> imageView2<span class="regexp">/0/</span>w<span class="regexp">/&lt;LongEdge&gt;/</span>h/&lt;ShortEdge&gt;</span><br><span class="line"><span class="label">  js:</span></span><br><span class="line"><span class="label">    folder:</span> js</span><br><span class="line"><span class="label">  css:</span></span><br><span class="line"><span class="label">    folder:</span> css</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/12/04/github-hexo写文章上传图片等常用操作记录/#more">...More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jmingzi.github.io/2015/12/04/github-hexo写文章上传图片等常用操作记录/" data-id="cijb5n2nn000p08ve9r26r2pe" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/搭建博客/">搭建博客</a></li></ul>
 
     </footer>
   </div>
@@ -614,7 +619,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">文章归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -624,6 +629,10 @@
     <h3 class="widget-title">最近文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/18/自定义js中confirm事件/">自定义js中confirm事件</a>
+          </li>
         
           <li>
             <a href="/2016/01/12/前端构建神器fis3/">前端构建神器fis3</a>
@@ -639,10 +648,6 @@
         
           <li>
             <a href="/2015/12/18/webpack初体验-二/">webpack初体验(二)</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/15/通讯录后台手机版的细节问题/">通讯录后台手机版的细节问题(设备像素比)</a>
           </li>
         
       </ul>
