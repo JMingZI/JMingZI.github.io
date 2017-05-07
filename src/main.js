@@ -14,9 +14,9 @@ class Index {
         
         this.panel = $(utils.app)
         this.form = $('#form')
+        this.sort = {}
         
         this.loginBox()
-        this.renderList()
         this.renderSort()
         this.bind()
     }
@@ -25,17 +25,19 @@ class Index {
         const query = new AV.Query('CollectionList')
         query.addDescending('createdAt')
         query.find().then(data=> {
-            let maps = {}
+            let value
             data.map(item=> {
-                maps[item.attributes.sort] = maps[item.attributes.sort] || []
-                maps[item.attributes.sort].push(item.attributes)
+                value = item.attributes
+                this.sort[value.sort].push(value)
+                // maps[item.attributes.sort] = maps[item.attributes.sort] || []
+                // maps[item.attributes.sort].push(item.attributes)
             })
             // console.log(maps)
             
             let str= ''
-            Object.keys(maps).map(item=> {
+            Object.keys(this.sort).map(item=> {
                 str += '<div class="app-list"><h1 class="sort-title">'+ item +'</h1>'
-                maps[item].map(list=> {
+                this.sort[item].map(list=> {
                     str += '<div class="app" data-url="'+ list.url +'">' +
                                 '<div class="icon"></div>' +
                                 '<div class="description">' +
@@ -59,8 +61,10 @@ class Index {
             // console.log(data)
             let p = this.form[0].sort
             data.map(item=> {
+                this.sort[item.attributes.name] = []
                 $(p).append($('<option/>', { value: item.attributes.name }).text(item.attributes.name))
             })
+            this.renderList()
         })
     }
     
