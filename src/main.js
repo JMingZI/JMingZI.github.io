@@ -22,7 +22,10 @@ class Index {
     }
     
     renderList() {
-        this.sort = {}
+        Object.keys(this.sort).map(item=> {
+            this.sort[item] = []
+        })
+        
         const query = new AV.Query('CollectionList')
         query.addDescending('createdAt')
         query.find().then(data=> {
