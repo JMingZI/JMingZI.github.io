@@ -6,20 +6,26 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JmingZI Collection</title>
-    <link rel="stylesheet" href="./src/style/index.css">
-</head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+<link href="app.css?4fb7911701822cb096dd" rel="stylesheet"></head>
 <body>
+    <div class="video-bg">
+        <video preload loop autoplay id="video" webkit-playsinline="true" playsinline="true">
+            <source type="video/mp4" src="http://game.gtimg.cn/images/lol/act/a20161116elementalist/video/header.mp4">
+            <source type="video/webm" src="http://game.gtimg.cn/images/lol/act/a20161116elementalist/video/header.webm">
+            <source type="video/ogg" src="http://game.gtimg.cn/images/lol/act/a20161116elementalist/video/header.ogg">
+        </video>
+        <div class="mask"></div>
+    </div>
+    
     <div id="app">
-
         <div class="app-wrap">
             <div class="app-top-menu">
                 <h1 class="app-title">M-Collection</h1>
 
                 <div class="menu">
-                    <a href="" class="item">目录</a>
-                    <a href="" class="item">博客</a>
-                    <a href="" class="item">github</a>
-                    <a href="" class="item">讨论</a>
+                    <a href="" class="item">登陆</a>
+                    <a href="" class="item">注册</a>
                 </div>
             </div>
 
@@ -94,8 +100,23 @@
         <div class="footer">
             <p>&copy; 前端Jmingzi</p>
         </div>
+    
+        <!--Call your modal-->
+        <a id="demo01" href="#animatedModal">DEMO01</a>
+    
+        <!--DEMO01-->
+        <div id="animatedModal">
+            <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+            <div class="close-animatedModal">
+                CLOSE MODAL
+            </div>
+        
+            <div class="modal-content">
+                <!--Your modal content goes here-->
+            </div>
+        </div>
     </div>
-
-    <script src="./src/main.js"></script>
-</body>
+    
+    <script src="//cdn1.lncld.net/static/js/2.2.1/av-min.js"></script>
+<script type="text/javascript" src="app.js?4fb7911701822cb096dd"></script><script type="text/javascript" src="manifest.js?4fb7911701822cb096dd"></script><script type="text/javascript" src="vendor.js?4fb7911701822cb096dd"></script></body>
 </html>

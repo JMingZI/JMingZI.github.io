@@ -1,0 +1,15 @@
+var config = require("./webpack.config.js");
+var webpackDevServer = require('webpack-dev-server')
+var webpack = require('webpack')
+
+// 1. 给app入口添加webpack/hot/dev-server
+// 注意：前面那一串是什么鬼？那是Node.js开启inline模式的方式
+config.entry.app.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+
+var compiler = webpack(config);
+var server = new webpackDevServer(compiler, {
+    // 2. 开启热替换模式
+    // 注意：这个参数不是webpack的参数，是webpack-dev-server的参数
+    hot: true
+});
+server.listen(8080);
