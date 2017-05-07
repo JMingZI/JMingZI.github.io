@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JmingZI Collection</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-<link href="app.css?4fb7911701822cb096dd" rel="stylesheet"></head>
+<link href="app.css?251f261f8803c2c6f901" rel="stylesheet"></head>
 <body>
     <div class="video-bg">
         <video preload loop autoplay id="video" webkit-playsinline="true" playsinline="true">
@@ -24,99 +24,63 @@
                 <h1 class="app-title">M-Collection</h1>
 
                 <div class="menu">
-                    <a href="" class="item">登陆</a>
-                    <a href="" class="item">注册</a>
+                    <a href="#add" class="item" id="login-btn">Add Collection</a>
                 </div>
             </div>
 
             <div class="app-list-wrap">
-                <div class="app-list">
-                    <h1 class="sort-title">自定义组件类</h1>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">MUI</p>
-                            <p class="desc">基于sass的px与rem的UI组件</p>
-                            <p class="author">贡献者：jmingzi</p>
-                        </div>
-                    </div>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">vue-loading</p>
-                            <p class="desc">vue-loading轮子</p>
-                        </div>
-                    </div>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">vue-message</p>
-                            <p class="desc">vue-message轮子</p>
-                        </div>
-                    </div>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">react-pager</p>
-                            <p class="desc">vue-message轮子</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="app-list">
-                    <h1 class="sort-title">库／框架使用类</h1>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">MUI</p>
-                            <p class="desc">基于sass的px与rem的UI组件</p>
-                        </div>
-                    </div>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">vue-loading</p>
-                            <p class="desc">vue-loading轮子</p>
-                        </div>
-                    </div>
-
-                    <div class="app">
-                        <div class="icon"></div>
-                        <div class="description">
-                            <p class="name">vue-message</p>
-                            <p class="desc">vue-message轮子</p>
-                        </div>
-                    </div>
-                </div>
+            
             </div>
         </div>
 
         <div class="footer">
-            <p>&copy; 前端Jmingzi</p>
+            <p>&copy; Jmingzi 2017/5/7</p>
+        </div>
+    </div>
+
+    <div id="add">
+        <div class="top">
+            Add Collection
         </div>
     
-        <!--Call your modal-->
-        <a id="demo01" href="#animatedModal">DEMO01</a>
-    
-        <!--DEMO01-->
-        <div id="animatedModal">
-            <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
-            <div class="close-animatedModal">
-                CLOSE MODAL
-            </div>
+        <div class="modal-content">
+            <form id="form">
+                <div class="form-group">
+                    <span class="label">名称</span>
+                    <input type="text" name="name" class="form-input" maxlength="20" placeholder="最多20字">
+                </div>
+            
+                <div class="form-group">
+                    <span class="label">描述</span>
+                    <input type="text" name="desc" class="form-input" maxlength="100" placeholder="最多100字">
+                </div>
+            
+                <div class="form-group">
+                    <span class="label">主页url</span>
+                    <input type="text" name="url" class="form-input" maxlength="300" placeholder="最多300字">
+                </div>
+            
+                <div class="form-group">
+                    <span class="label">分类</span>
+                    <select class="form-input" name="sort"></select>
+                </div>
+            
+                <div class="form-group">
+                    <span class="label">贡献者</span>
+                    <input type="text" name="user" class="form-input" maxlength="10" placeholder="最多10字">
+                </div>
+            </form>
         
-            <div class="modal-content">
-                <!--Your modal content goes here-->
+            <div class="bottom">
+                <div class="close-add" id="btn-close-modal">
+                    关闭
+                </div>
+                <div class="confirm-btn">
+                    确定
+                </div>
             </div>
         </div>
     </div>
-    
     <script src="//cdn1.lncld.net/static/js/2.2.1/av-min.js"></script>
-<script type="text/javascript" src="app.js?4fb7911701822cb096dd"></script><script type="text/javascript" src="manifest.js?4fb7911701822cb096dd"></script><script type="text/javascript" src="vendor.js?4fb7911701822cb096dd"></script></body>
+<script type="text/javascript" src="app.js?251f261f8803c2c6f901"></script><script type="text/javascript" src="manifest.js?251f261f8803c2c6f901"></script><script type="text/javascript" src="vendor.js?251f261f8803c2c6f901"></script></body>
 </html>
