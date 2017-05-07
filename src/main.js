@@ -22,15 +22,15 @@ class Index {
     }
     
     renderList() {
+        this.sort = {}
         const query = new AV.Query('CollectionList')
         query.addDescending('createdAt')
         query.find().then(data=> {
             let value
             data.map(item=> {
                 value = item.attributes
+                value.id = item.id
                 this.sort[value.sort].push(value)
-                // maps[item.attributes.sort] = maps[item.attributes.sort] || []
-                // maps[item.attributes.sort].push(item.attributes)
             })
             // console.log(maps)
             
@@ -38,7 +38,7 @@ class Index {
             Object.keys(this.sort).map(item=> {
                 str += '<div class="app-list"><h1 class="sort-title">'+ item +'</h1>'
                 this.sort[item].map(list=> {
-                    str += '<div class="app" data-url="'+ list.url +'">' +
+                    str += '<div class="app" data-url="'+ list.url +'" id="'+ list.id +'">' +
                                 '<div class="icon"></div>' +
                                 '<div class="description">' +
                                 '<p class="name">'+ list.name +'</p>' +
@@ -91,34 +91,59 @@ class Index {
         }
     }
     
+    getDetail(id) {
+        const query = new AV.Query('CollectionList')
+        query.get(id).then(res=> {
+            let data = res.attributes
+            for(let name in data) {
+                this.form[0][name].value = data[name]
+            }
+        })
+    }
+    
     bind() {
+        let me = this
         
         $('body').on('click', '.confirm-btn', e=> {
             e.stopPropagation()
     
-            let data = this.getData()
-            const collectionList = AV.Object.extend('CollectionList')
-            const list = new collectionList()
+            let data = this.getData(),
+                id = $('body').attr('id'),
+                list = null
             
+            if (id) {
+                list = AV.Object.createWithoutData('CollectionList', id)
+            } else {
+                const collectionList = AV.Object.extend('CollectionList')
+                list = new collectionList()
+            }
             Object.keys(data).map(item=> {
                 list.set(item, data[item])
             })
-            
             list.save().then(res=> {
-                // console.log(res)
+                $('body').removeAttr('id')
                 if (res.id) {
                     $('#btn-close-modal').click()
-                    alert('添加成功')
                     this.renderList()
                 }
             })
         })
         
-        this.panel.on('click', '.app', function(e) {
-            e.stopPropagation()
-            window.open(this.getAttribute('data-url'))
-        })
+        this.panel.on({
+            click: function(e) {
+                e.stopPropagation()
+                window.open(this.getAttribute('data-url'))
+            }
+        }, '.app')
         
+        this.panel.on('click', '.icon', function(e) {
+            e.stopPropagation()
+            $('#login-btn').click()
+            
+            let id = $(this).parent().attr('id')
+            $('body').attr('id', id)
+            me.getDetail(id)
+        })
     }
 }
 
