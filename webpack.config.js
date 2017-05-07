@@ -43,7 +43,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
-            chunks: ['vendor']
+            chunks: ['vendor', 'app']
         }),
         new ExtractTextPlugin({
             filename: '[name].css',
@@ -63,9 +63,9 @@ module.exports = {
             chunks: ['app', 'vendor', 'manifest']
         }),
         // compile time plugins
-        // new webpack.DefinePlugin({
-        //     'process.env.NODE_ENV': '"production"',
-        // }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"',
+        }),
         // webpack-dev-server enhancement plugins
         // new DashboardPlugin(),
         new webpack.HotModuleReplacementPlugin(),

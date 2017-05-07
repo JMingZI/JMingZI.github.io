@@ -1,6 +1,7 @@
+import $ from 'jquery'
 import utils from './utils'
 // http://joaopereirawd.github.io/animatedModal.js/
-import './components/animatedModal.min'
+import './components/animatedModal'
 import './style/index.scss'
 
 const appId = 'eQwIRpI6625dT6h8eibTeGKv-gzGzoHsz'
@@ -88,7 +89,7 @@ class Index {
     
     bind() {
         
-        this.panel.on('click', '.confirm-btn', e=> {
+        $('body').on('click', '.confirm-btn', e=> {
             e.stopPropagation()
     
             let data = this.getData()
@@ -102,7 +103,9 @@ class Index {
             list.save().then(res=> {
                 // console.log(res)
                 if (res.id) {
+                    $('#btn-close-modal').click()
                     alert('添加成功')
+                    this.renderList()
                 }
             })
         })

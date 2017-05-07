@@ -5,6 +5,7 @@
  * email: joaopereirawd@gmail.com
  * Licensed MIT 
 =========================================*/
+import jQuery from 'jquery'
 
 (function ($) {
  
