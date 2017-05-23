@@ -28,6 +28,11 @@ module.exports = {
                 })
             },
             {
+                test: /\.(jpg|png)$/,
+                include: path.resolve(__dirname, './src/images'),
+                use: 'url-loader?limit=20000&name=images/[name].[ext]'
+            },
+            {
                 test: /.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
