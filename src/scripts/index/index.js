@@ -5,18 +5,44 @@ class Index {
         this.separator = 'jmingzi'
         
         this.initBg()
+        
+        this.initNav()
     }
     
-    setBgFromLocal(url) {
-        const bg = redom.el('div', {
-                style: {
-                    width: '100%',
-                    height: document.body.clientHeight + 'px'
-                }
-            },
-            redom.el('img', { src: url, style: { width: '100%', height: '100%' } }))
+    loadImg(url) {
+        return new Promise((resolve, reject)=> {
+            const img = new Image()
+    
+            img.src = url
+            img.onload = ()=> {
+                resolve(true)
+            }
+            img.onerror = ()=> {
+                reject(false)
+            }
+        })
+    }
+    
+    async setBgFromLocal(url) {
+        let isLoad = await this.loadImg(url)
         
-        redom.mount(document.body, bg)
+        if (isLoad) {
+            const bg = redom.el('div', { style: {
+                        width: '100%',
+                        height: document.body.clientHeight + 'px'
+                    }
+                },
+                redom.el('img', { src: url, style: {
+                    width: '100%',
+                    height: '100%',
+                    opacity: 0,
+                    transition: 'opacity .5s',
+                    '-webkit-transition': 'opacity .5s'
+                }, onload: (e)=> e.target.style.opacity = 1 })
+            )
+    
+            redom.mount(document.body, bg)
+        }
     }
     
     async setBgFromRandom() {
@@ -46,6 +72,22 @@ class Index {
         }
         
         this.setBgFromRandom()
+    }
+    
+    initNav() {
+        const navA = constant.navData.map((item, i)=> {
+            return redom.el('a', {
+                className: 'display-ib align-middle color-fff px-padding-lr20' + (i !== constant.navData.length - 1 ? ' bd-fff-r' : ''),
+                textContent: item.name,
+                href: item.url,
+                target: '_blank'
+            })
+        })
+        
+        const nav = redom.el('div', { className: 'position-a top-nav px-font-14' })
+        
+        redom.setChildren(nav, navA)
+        redom.mount(document.getElementById('-wrap-index'), nav)
     }
     
 }

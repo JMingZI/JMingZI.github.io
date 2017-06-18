@@ -5,28 +5,46 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jmingzi - to be a better life !</title>
+    <title>Mworks - 春风十里，一步一印</title>
+    <meta name="description" content="jmingzi的作品集，春风十里，一步一印" />
+    <meta name="keywords" content="jmingzi，作品集，收藏集" />
     <link rel="stylesheet" href="//statics.jituancaiyun.com/css/mui/3.0/mui.css">
     <style>
         html, body {
             height: 100%;
         }
         body {
-            background-color: #f2f2f2;
+            background-color: #333;
         }
-        .copyright {
-            right: 50px;
-            bottom: 70px;
+        .wrap-index {
+            width: 1000px;
+            left: 50%;
+            margin-left: -500px;
+            top: 100px;
+            bottom: 50px;
+        }
+        .wrap-bottom-copy {
+            width: 100%;
+            bottom: 0;
+        }
+        .top-nav {
+            top: 20px;
+            right: 0;
         }
     </style>
 </head>
 <body>
-    <div class="color-fff px-font-12 position-a copyright">图片来自必应，接口由xcss/bing提供</div>
+    <div class="position-a wrap-index" id="-wrap-index">
+        <img src="./src/images/logo-words.png" alt="jmingzi" class="logo">
+        
+        <div class="position-a wrap-bottom-copy text-center">
+            <div class="color-fff px-font-12">&copy; ymblog.net 2017-06-17 图片来自必应，接口由xcss/bing提供</div>
+        </div>
+    </div>
 
     <script src="https://cdn.bootcss.com/redom/2.7.1/redom.min.js"></script>
-    <!--<script src="//statics.jituancaiyun.com/js/reqwest/reqwest.js"></script>-->
-    <!--<script src="https://cdn.bootcss.com/axios/0.16.2/axios.min.js"></script>-->
     <script src="./src/dist/resource/index.js"></script>
+    <script src="./src/dist/constant/index.js"></script>
     <script src="./src/dist/index/index.js"></script>
 </body>
 </html>
