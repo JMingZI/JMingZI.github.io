@@ -21,6 +21,12 @@
             desc: '老铁，喜欢就赞一下吧',
             logo: '//cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png',
             url: '//www.jianshu.com/u/f979c193b1c3'
+        }, {
+            id: 4,
+            name: '文集',
+            desc: '那偶尔的文艺风气',
+            logo: '//cdn2.jianshu.io/assets/web/logo-58fd04f6f0de908401aa561cda6a0688.png',
+            url: '#'
         }]
     };
 })(window);
